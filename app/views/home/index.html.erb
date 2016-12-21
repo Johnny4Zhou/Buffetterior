@@ -1,0 +1,160 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand" href="index.html">Business Casual</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+                <div id="carousel-example-generic" class="carousel slide">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators hidden-xs">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+
+                            <%= image_tag 'slide-1.jpg', class: "img-responsive img-full" %>
+                        </div>
+                        <div class="item">
+                            <%= image_tag 'slide-2.jpg', class: "img-responsive img-full" %>
+                        </div>
+                        <div class="item">
+                            <%= image_tag 'slide-3.jpg', class: "img-responsive img-full" %>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="icon-prev"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="icon-next"></span>
+                    </a>
+                </div>
+                <h2 class="brand-before">
+                    <small>Welcome to</small>
+                </h2>
+                <h1 class="brand-name">Buffetterior</h1>
+                <hr class="tagline-divider">
+                <h2>
+                    <small>By
+                        <strong>Johnny.Z</strong>
+                    </small>
+                </h2>
+
+
+                <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Search by Symbol</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+                <div class="form-group has-feedback">
+
+                <%= form_tag(search_quote_path, method: 'get',class: 'search-form') do %>
+                <div class="form-group has-feedback">
+                <%= text_field_tag(:content, @search, class: 'form-control', placeholder: 'Enter a Symbol') %>
+                <span class="fa fa-search form-control-feedback"></span>
+              </div>
+                  <% end %>
+            	</div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">The New York Stock Exchange
+                </h2>
+                <hr>
+
+                <%= image_tag 'nyse.png', class: "img-responsive img-border img-left", style: "width: 100px" %>
+                <hr class="visible-xs">
+                <p>The most prestigious exchange in the world is the New York Stock Exchange (NYSE). The "Big Board" was founded over 200 years ago in 1792 with the signing of the Buttonwood Agreement by 24 New York City stockbrokers and merchants. Currently the NYSE, with stocks like General Electric, McDonald's, Citigroup, Coca-Cola, Gillette and Wal-mart, is the market of choice for the largest companies in America.</p>
+                <p>The NYSE is the first type of exchange (as we referred to above), where much of the trading is done face-to-face on a trading floor. This is also referred to as a listed exchange. Orders come in through brokerage firms that are members of the exchange and flow down to floor brokers who go to a specific spot on the floor where the stock trades. At this location, known as the trading post, there is a specific person known as the specialist whose job is to match buyers and sellers.</p>
+                <p> Prices are determined using an auction method: the current price is the highest amount any buyer is willing to pay and the lowest price at which someone is willing to sell. Once a trade has been made, the details are sent back to the brokerage firm, who then notifies the investor who placed the order. Although there is human contact in this process, don't think that the NYSE is still in the stone age: computers play a huge role in the process.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">The Nasdaq
+                </h2>
+                <hr>
+                <%= image_tag 'nasdaq.png', class: "img-responsive img-border img-left", style: "width: 100px" %>
+                <hr class="visible-xs">
+                <p>The second type of exchange is the virtual sort called an over-the-counter (OTC) market, of which the Nasdaq is the most popular. These markets have no central location or floor brokers whatsoever. Trading is done through a computer and telecommunications network of dealers. It used to be that the largest companies were listed only on the NYSE while all other second tier stocks traded on the other exchanges. The tech boom of the late '90s changed all this; now the Nasdaq is home to several big technology companies such as Microsoft, Cisco, Intel, Dell and Oracle. This has resulted in the Nasdaq becoming a serious competitor to the NYSE.</p>
+                <p>On the Nasdaq brokerages act as market makers for various stocks. A market maker provides continuous bid and ask prices within a prescribed percentage spread for shares for which they are designated to make a market. They may match up buyers and sellers directly but usually they will maintain an inventory of shares to meet demands of investors. </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright &copy; Buffetterior 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Script to Activate the Carousel -->
+<script>
+$('.carousel').carousel({
+    interval: 3000 //changes the speed
+})
+</script>

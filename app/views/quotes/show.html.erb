@@ -1,0 +1,791 @@
+<div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><%= @quote.name %></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-sun-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= @data[0].open %></div>
+                                    <div>Open</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-arrow-up fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= @data[0].high %></div>
+                                    <div>High</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-arrow-down fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= @data[0].low %></div>
+                                    <div>Low</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-moon-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%= @data[0].close %></div>
+                                    <div>Close</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+
+                  <!-- /.>>>>>>>>>>>............>>>>>>>>>>>>>>>> Beginning OF LINE CHART >>>>>>>>>>>............>>>>>>>>>>>>>>>>-->
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-line-chart fa-fw"></i>
+                            <chart id = 'linechart'>Price Chart</chart>
+
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <div id="high-chart" style="width:100%; height:400px;"></div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.>>>>>>>>>>>............>>>>>>>>>>>>>>>> END OF LINE CHART >>>>>>>>>>>............>>>>>>>>>>>>>>>>-->
+                    <!-- /.panel -->
+                    <!-- /.>>>>>>>>>>>............>>>>>>>>>>>>>>>> BEGINNING OF line and bar CHART >>>>>>>>>>>............>>>>>>>>>>>>>>>>-->
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-table fa-fw"></i> Recent Financial
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- <div class="col-lg-4"> -->
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th><%= @quote.symbol %></th>
+                                                    <th>Financials</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Revenue</td>
+                                                    <td><%= @data[0].revenue %></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Market Capitalization</td>
+                                                  <td><%= @data[0].market_capitalization %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>P/E Ratio</td>
+                                                    <td><%= @data[0].pe_ratio %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PEG Ratio</td>
+                                                    <td><%= @data[0].peg_ratio %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Average Daily Volume</td>
+                                                    <td><%= @data[0].average_daily_volume %></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Last Trading Day Volume</td>
+                                                  <td><%= @data[0].volume %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Book Value</td>
+                                                    <td><%= @data[0].book_value %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>52 Weeks Range</td>
+                                                    <td><%= @data[0].weeks_range_52 %></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                <!-- </div> -->
+                                <!-- /.col-lg-4 (nested) -->
+                                <!-- <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div> -->
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.>>>>>>>>>>>............>>>>>>>>>>>>>>>> END OF table and bar chart CHART >>>>>>>>>>>............>>>>>>>>>>>>>>>>-->
+
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> Analysis
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+
+                                <li>
+                                  <% if @revenu_score > 0  %>
+                                    <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                    </div>
+                                    <% else %>
+                                    <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                    </div>
+                                    <% end %>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Revenue Analysis</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                          <% if @revenu_score < 0  %>
+                                            <p>Insufficient Data</p>
+                                          <% else %>
+                                            <% if @revenu_score > 0 %>
+                                            <p>Revenue Increased</p>
+                                            <% else %>
+                                            <p>Revenue did not Increase</p>
+                                            <% end %>
+                                            <% end %>
+
+                                        </div>
+                                        <hr>
+                                        <a href="#revenue" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                <div id="revenue" class="collapse" style="background-color: white; padding: 1px;">
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Fiscal Year</th>
+                                            <% (-5..-1).each do |i| %>
+                                              <th><%= @annual['Fiscal Year'][i] %></th>
+                                            <% end %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th>Revenue</th>
+                                      <% (-5..-1).each do |i| %>
+                                          <th><%= @annual['income_statement']['Revenue'][i]  %></th>
+                                          <% end %>
+                                      </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div id="highrevenue" ></div>
+                                </div>
+                              </li>
+
+
+                              <li class="timeline-inverted">
+                                <% if @earning_score > 0  %>
+                                  <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                  </div>
+                                  <% else %>
+                                  <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                  </div>
+                                  <% end %>
+                                <div class="timeline-panel">
+                                  <div class="timeline-heading">
+                                    <h4 class="timeline-title">Earning Analysis</h4>
+                                  </div>
+                                  <div class="timeline-body">
+                                    <% if @earning_score < 0  %>
+                                      <p>Insufficient Data</p>
+                                    <% else %>
+                                    <% if @earning_score > 0 %>
+                                    <p>Company's earning has increased</p>
+                                    <% if @recent_earning < 0 %>
+                                    <p>Company is losing money</p>
+                                    <% end %>
+                                    <% else %>
+                                    <p>Company's earning has decreased</p>
+                                    <% if @recent_earning < 0 %>
+                                    <p>Company is losing money</p>
+                                    <% end %>
+                                    <% end %>
+                                    <% end %>
+                                  </div>
+                                  <hr>
+                                  <a href="#earning" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                </div>
+                              </li>
+                              <li>
+                                <div id="earning" class="collapse" style="background-color: white; padding: 1px;">
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Fiscal Year</th>
+                                            <% (-5..-1).each do |i| %>
+                                              <th><%= @annual['Fiscal Year'][i] %></th>
+                                            <% end %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                          <th>Earning</th>
+                                          <% (-5..-1).each do |i| %>
+                                            <th><%= @annual['income_statement']['EBITDA'][i]  %></th>
+                                          <% end %>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                            </div>
+                            <div id="highearning" ></div>
+                                </div>
+                              </li>
+
+                                <li>
+                                  <% if @eps_score > 0  %>
+                                    <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                    </div>
+                                    <% else %>
+                                    <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                    </div>
+                                    <% end %>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">EPS Ratio Analysis</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                          <% if @eps_score < 0  %>
+                                            <p>Insufficient Data</p>
+                                          <% else %>
+                                            <% if @eps_score > 0 %>
+                                            <p>Earning Per Share Increased</p>
+                                            <% else %>
+                                            <p>Earning Per Share Decreased</p>
+                                            <% end %>
+                                            <% end %>
+                                        </div>
+                                        <hr>
+                                        <a href="#EPSratios" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                    </div>
+                                </li>
+                                <li>
+                                <div id="EPSratios" class="collapse" style="background-color: white; padding: 1px;">
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Fiscal Year</th>
+                                            <% (-5..-1).each do |i| %>
+                                              <th><%= @annual['Fiscal Year'][i] %></th>
+                                            <% end %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th>Earning Per Share(EPS)</th>
+                                      <% (-5..-1).each do |i| %>
+                                          <th><%= @annual['income_statement']['EPS (Basic)'][i]  %></th>
+                                          <% end %>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                            </div>
+                            <div id="higheps" ></div>
+                                </div>
+                              </li>
+
+                                <li  class="timeline-inverted">
+                                  <% if @pe_score > 0  %>
+                                    <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                    </div>
+                                    <% else %>
+                                    <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                    </div>
+                                    <% end %>
+                                  <div class="timeline-panel">
+                                      <div class="timeline-heading">
+                                          <h4 class="timeline-title">Price Earning Analysis</h4>
+                                      </div>
+                                      <div class="timeline-body">
+                                          <% if @pe_exists %>
+                                          <% if @pe_score > 0 %>
+                                          <p>Price is less expensive on the market</p>
+                                          <% else %>
+                                          <p>Price is more expensive on the market</p>
+                                          <% end %>
+                                          <% else %>
+                                            <p>Company is lossing money, no PE ratio</p>
+                                          <% end %>
+                                      </div>
+                                      <hr>
+                                      <a href="#PEratios" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                  </div>
+                              </li>
+                              <li>
+                              <div id="PEratios" class="collapse" style="background-color: white; padding: 10px;">
+                                <div class="table-responsive">
+                                  <table class="table table-bordered table-hover table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>Fiscal Year</th>
+                                          <% (-5..-1).each do |i| %>
+                                            <th><%= @annual['Fiscal Year'][i] %></th>
+                                          <% end %>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% if @pe_exists %>
+                                    <tr>
+                                      <th>Price/Earning(PE) Ratio</th>
+                                    <% (-5..-1).each do |i| %>
+                                        <th><%= @annual['valuation_ratios']['PE Ratio(TTM)'][i]  %></th>
+                                        <% end %>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                          </div>
+                          <div id="highpe" ></div>
+                              </div>
+                                </li>
+
+                                <li>
+                                  <% if @moving_avg_score > 0  %>
+                                    <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                    </div>
+                                    <% else %>
+                                    <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                    </div>
+                                    <% end %>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Trending Analysis</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                          <% if @moving_avg_score > 0 %>
+                                            <p> Price has downward tranding, 200_day moving average is higher than 50_day</p>
+                                            <% else %>
+                                            <p> Price has upward trending, 50_day moving average is higher than 200_day</p>
+                                            <% end %>
+                                            <hr>
+                                            <a href="#moving_avg" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                            </div>
+                                            </li>
+                                            <li>
+                                            <div id="moving_avg" class="collapse" style="background-color: lightgrey; padding: 10px;">
+                                            <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>50_day Moving Average </th>
+                                                <th>200_day Moving Average </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% if @moving_avg_score < 0 %>
+                                            <p>Insufficient Data</p>
+                                            <% else %>
+                                            <tr>
+                                                <th><%= @fiftyday %> </th>
+                                                <th><%= @twohunday %> </th>
+                                            </tr>
+                                            <% end %>
+                                            </tbody>
+                                            </table>
+                                            </div>
+                                            </div>
+                                          </li>
+
+                                <li class="timeline-inverted">
+                                  <% if @price_score > 0  %>
+                                    <div class="timeline-badge success"><i class="fa fa-check"></i>
+                                    </div>
+                                    <% else %>
+                                    <div class="timeline-badge danger"><i class="fa fa-times"></i>
+                                    </div>
+                                    <% end %>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Price Analysis</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                          <% if @price_score > 0 %>
+                                          <p> Price is adequate</p>
+                                            <% else %>
+                                            <p> Price is too expensive</p>
+                                            <% end %>
+                                            <hr>
+                                            <a href="#price" class="btn btn-info" data-toggle="collapse">More Detail</a>
+                                            </div>
+                                            </li>
+                                            <li>
+                                            <div id="price" class="collapse" style="background-color: lightgrey; padding: 10px;">
+                                            <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>change from 52 week high</th>
+                                                <th>change_from 52 week low</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% if @price_score < 0 %>
+                                            <p>Insufficient Data</p>
+                                            <% else %>
+                                            <tr>
+                                                <th><%= @data[0].percent_change_from_52_week_high %> </th>
+                                                <th><%= @data[0].percent_change_from_52_week_low %> </th>
+                                            </tr>
+                                            <% end %>
+                                            </tbody>
+                                            </table>
+                                            </div>
+                                            </div>
+                                </li>
+
+                                <li>
+                                  <% if @final_score == 1 %>
+                                  <div class="timeline-badge success">Buy
+                                  </div>
+                                  <% elsif @final_score == 0 %>
+                                  <div class="timeline-badge info">Hold
+                                  </div>
+                                  <% elsif @final_score == -1 %>
+                                  <div class="timeline-badge danger">Sell
+                                  </div>
+                                  <% else %>
+                                  <div class="timeline-badge ">N/A
+                                  </div>
+                                  <% end %>
+                              </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                  <!-- /.panel -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <i class="fa fa-bar-chart-o fa-fw"></i> Income
+                      <div class="pull-right">
+                          <div class="btn-group btn-group-xs">
+                            <button type="button" id='thirday' class="btn btn-info">30-Day</button>
+                            <button type="button" id='sixmonth' class="btn btn-success">6-Month</button>
+                            <button type="button" id='oneyear' class="btn btn-primary">1-year</button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <div id="morris-donut-chart"></div>
+                      <a href="#" class="btn btn-default btn-block">View Details</a>
+                    </div>
+                    <!-- /.panel-body -->
+                  </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-money fa-fw"></i> Exchange Rate
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-usd fa-fw"></i> USD to CAD
+                                    <span class="pull-right text-muted small"><em><%= @currency[0].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-gbp fa-fw"></i> USD to GBP
+                                    <span class="pull-right text-muted small"><em><%= @currency[1].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-eur fa-fw"></i> USD to ERU
+                                    <span class="pull-right text-muted small"><em><%= @currency[2].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-usd fa-fw"></i> USD to AUD
+                                    <span class="pull-right text-muted small"><em><%= @currency[3].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-inr fa-fw"></i> USD to INR
+                                    <span class="pull-right text-muted small"><em><%= @currency[4].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-jpy fa-fw"></i> USD to CNY
+                                    <span class="pull-right text-muted small"><em><%= @currency[5].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-usd fa-fw"></i> USD to HKD
+                                    <span class="pull-right text-muted small"><em><%= @currency[6].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-kwr fa-fw"></i> USD to KRW
+                                    <span class="pull-right text-muted small"><em><%= @currency[7].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-usd fa-fw"></i> USD to NZD
+                                    <span class="pull-right text-muted small"><em><%= @currency[8].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-usd fa-fw"></i> USD to SGD
+                                    <span class="pull-right text-muted small"><em><%= @currency[9].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> USD to CHF
+                                    <span class="pull-right text-muted small"><em><%= @currency[10].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-jpy fa-fw"></i> USD to JPY
+                                    <span class="pull-right text-muted small"><em><%= @currency[11].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> USD to ZAR
+                                    <span class="pull-right text-muted small"><em><%= @currency[12].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> USD to BRL
+                                    <span class="pull-right text-muted small"><em><%= @currency[13].ask %></em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> USD to MXN
+                                    <span class="pull-right text-muted small"><em><%= @currency[14].ask %></em>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /.list-group -->
+                            <%= button_to('View All Tables', quote_financials_path(@quote), method: :get, :class => 'btn btn-default btn-block')  %>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Comment
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-circle fa-fw"></i> Available
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-times fa-fw"></i> Busy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <script> </script>
+<%= javascript_include_tag "highchart" %>
+<%= javascript_include_tag "analysischart" %>
